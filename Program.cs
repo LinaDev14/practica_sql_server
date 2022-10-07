@@ -40,6 +40,7 @@ class Program
                         break;
 
                     case 4:
+                        Delete(beerDB);
                         break;
 
                     case 5:
@@ -104,7 +105,7 @@ class Program
         {
             Console.Clear();
             Show(beerDB);
-            Console.WriteLine("Editar Cervezas");
+            Console.WriteLine("Editar Cerveza");
             Console.WriteLine("Escribe el id de tu cerveza a editar: ");
 
             int id = int.Parse(Console.ReadLine());
@@ -132,6 +133,29 @@ class Program
         }
 
 
-        
+
+        static void Delete(BeerDB beerDB)
+        {
+            Console.Clear();
+            Show(beerDB);
+            Console.WriteLine("Eliminar Cerveza");
+            Console.WriteLine("Escribe el id de tu cerveza a eliminar: ");
+
+            int id = int.Parse(Console.ReadLine());
+
+            Beer beer = beerDB.Get(id);
+
+            if (beer != null)
+            {
+                beerDB.delete(id);
+            }
+            else
+            {
+                Console.WriteLine("La cerveza no esta registrada en la base de datos");
+            }
+
+        }
+
+
     }
 }
